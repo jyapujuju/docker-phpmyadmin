@@ -1,0 +1,32 @@
+db:
+  image: mysql:latest
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./var/mysql:/var/lib/mysql
+  environment:
+    - MYSQL_DATABASE=db
+    - MYSQL_USER=root
+    - MYSQL_PASSWORD=password
+    - MYSQL_ROOT_PASSWORD=password
+
+web:
+  # image: eboraas/apache-php
+  image: tutum/apache-php
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - db
+  volumes:
+    - ./www:/app
+
+phpmyadmin:
+  image: corbinu/docker-phpmyadmin
+  links:
+    - db:mysql
+  ports:
+    - 8181:80
+  environment:
+    - MYSQL_USER=root
+    - MYSQL_ROOT_PASSWORD=password
