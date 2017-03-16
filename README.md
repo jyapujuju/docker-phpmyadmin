@@ -2,6 +2,7 @@
 this is an docker-compose file for start the lamp stack with phpadmin with docker.
 
 # prerequisite
+
 - [x] docker
 - [x] docker-compose
 - [ ] git
