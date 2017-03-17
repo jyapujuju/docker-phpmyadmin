@@ -21,6 +21,7 @@ web:
     - ./www:/app
 
 phpmyadmin:
+  image: phpmyadmin/phpmyadmin
   links:
     - db:mysql
   ports:
