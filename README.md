@@ -12,6 +12,6 @@ this is an docker-compose file for start the lamp stack with phpadmin with docke
 - cd lamp-mysql-phpmyadmin-docker
 - docker-compose build
 - docker-compose up
-- chown -R $USER:$GROUPS .
--  - chown step is necessary for linux user only $USER is username and $GROUPS is corresponding groupname you can find this using $> ls -l
+- sudo chmod -R 777 www
+-  - for linux user only 
 - create folder inside the www folder :)
