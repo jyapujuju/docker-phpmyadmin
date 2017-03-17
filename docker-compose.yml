@@ -21,7 +21,6 @@ web:
     - ./www:/app
 
 phpmyadmin:
-  image: corbinu/docker-phpmyadmin
   links:
     - db:mysql
   ports:
