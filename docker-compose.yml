@@ -11,8 +11,7 @@ db:
     - MYSQL_ROOT_PASSWORD=password
 
 web:
-  # image: eboraas/apache-php
-  image: tutum/apache-php
+  image: eboraas/apache-php
   ports:
     - "80:80"
     - "443:443"
@@ -27,6 +26,8 @@ phpmyadmin:
     - db:mysql
   ports:
     - 8181:80
+  volumes:
+    - ./var/phpmyadmin:/var/lib/phpmyadmin
   environment:
     - MYSQL_USER=root
     - MYSQL_ROOT_PASSWORD=password
