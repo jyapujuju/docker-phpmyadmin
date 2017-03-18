@@ -26,7 +26,7 @@ phpmyadmin:
   ports:
     - 8181:80
   volumes:
-    - ./var/phpmyadmin:/var/lib/phpmyadmin
+    - ./phpmyadmin:/var/lib/phpmyadmin
   environment:
     - MYSQL_USER=root
     - MYSQL_ROOT_PASSWORD=password
