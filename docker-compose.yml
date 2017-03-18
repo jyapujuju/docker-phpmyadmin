@@ -1,5 +1,5 @@
 db:
-  image: mysql:latest
+  image: mysql/mysql-server
   ports:
     - "3306:3306"
   volumes:
@@ -20,7 +20,7 @@ web:
     - ./www:/app
 
 phpmyadmin:
-  image: corbinu/docker-phpmyadmin
+  image: phpmyadmin/phpmyadmin
   links:
     - db:mysql
   ports:
