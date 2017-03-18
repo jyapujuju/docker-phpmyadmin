@@ -11,17 +11,16 @@ db:
     - MYSQL_ROOT_PASSWORD=password
 
 web:
-  image: eboraas/apache-php
+  image: tutum/apache-php
   ports:
     - "80:80"
-    - "443:443"
   links:
     - db
   volumes:
     - ./www:/app
 
 phpmyadmin:
-  image: phpmyadmin/phpmyadmin
+  image: corbinu/docker-phpmyadmin
   links:
     - db:mysql
   ports:
