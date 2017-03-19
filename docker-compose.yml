@@ -1,32 +1,39 @@
-db:
-  image: mysql/mysql-server
-  ports:
-    - "3306:3306"
-  volumes:
-    - ./var/mysql:/var/lib/mysql
-  environment:
-    - MYSQL_DATABASE=db
-    - MYSQL_USER=root
-    - MYSQL_PASSWORD=password
-    - MYSQL_ROOT_PASSWORD=password
+version: '2'
 
-web:
-  image: tutum/apache-php
-  ports:
-    - "80:80"
-  links:
-    - db
-  volumes:
-    - ./www:/app
+services:
+  db:
+     image: mysql:5.7
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+       MYSQL_DATABASE: database
+       MYSQL_PASSWORD: password
 
-phpmyadmin:
-  image: phpmyadmin/phpmyadmin
-  links:
-    - db:mysql
-  ports:
-    - 8181:80
-  volumes:
-    - ./phpmyadmin:/var/lib/phpmyadmin
-  environment:
-    - MYSQL_USER=root
-    - MYSQL_ROOT_PASSWORD=password
+  wordpress:
+     image: tutum/apache-php
+     depends_on:
+       - db
+     volumes:
+        - ./www:/app
+     ports:
+       - 80:80
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_PASSWORD: wordpress
+
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    environment:
+            #PMA_ARBITRARY: 1
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+            PMA_HOST: db
+
+    ports:
+      - "8848:80"
+
+volumes:
+    db_data:
