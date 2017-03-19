@@ -1,5 +1,5 @@
 # what is it ?
-this is an docker-compose file for start the lamp stack with phpadmin with docker.
+this is an docker-compose file for start the lamp stack with phpadmin with docker. just add the php files in www folder.
 
 # prerequisite
 
@@ -8,10 +8,13 @@ this is an docker-compose file for start the lamp stack with phpadmin with docke
 - [ ] git
 
 # How to use ?
-- git clone git@github.com:jyapujuju/lamp-mysql-phpmyadmin-docker.git
-- cd lamp-mysql-phpmyadmin-docker
-- docker-compose build
-- docker-compose up
-- sudo chmod -R 777 www
--  - for linux user only 
+- ```git clone git@github.com:jyapujuju/docker-phpmyadmin.git```
+- ```cd docker-phpmyadmin```
+- ```docker-compose up -d```
+- ```docker-compose up```
+- ```sudo chmod -R 777 www```
+-  - for linux user only
 - create folder inside the www folder :)
+- phpmyadmin may take some moment start up in initial phase for sake of necessary file generation
+- username is ``root``
+- password is ``password``
