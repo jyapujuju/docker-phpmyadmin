@@ -18,3 +18,4 @@ this is an docker-compose file for start the lamp stack with phpadmin with docke
 - phpmyadmin may take some moment start up in initial phase for sake of necessary file generation
 - username is ``root``
 - password is ``password``
+- add ```ruby ini_set('display_errors',"1");  ``` in your php file to get error info
